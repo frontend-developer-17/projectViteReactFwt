@@ -24,6 +24,7 @@ export const CardItem: React.FC<Props> = ({ painting, authors, locations }) => {
         src={`${BaseUrl[0]}${painting.imageUrl}`}
         alt={painting.name}
         style={{ backgroundColor: 'lightgray' }}
+        loading='lazy'
       />
 
       <div className={styles.cardInfoWrapper + isLightTheme}>

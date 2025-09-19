@@ -29,32 +29,32 @@ export const CardList: React.FC<Props> = ({
   const lastPages = useRef<Record<string, boolean>>({});
   const [currentPaginatePage, setCurrentPaginatePage] = useState(0);
   const [currentPageData, setCurrentPageData] = useState<TPaitings[]>([]);
-  const [searchPaitings, setSearchPaitings] = useState<TPaitings[]>([]);
+
   useEffect(() => {
-    if (!lastPages.current[currentPaginatePage]) {
-      debugger;
+    if (value === '' && !lastPages.current[currentPaginatePage]) {
       if (paintings && paintings.length > 0) {
         setAllPaitings((prev) => [...prev, ...paintings]);
         lastPages.current[currentPaginatePage] = true;
       }
     }
     if (value !== '' && paintings) {
-      setSearchPaitings(paintings);
-      setAllPaitings([]);
-      lastPages.current = {};
+      const currentDate = paintings.slice(0, 6);
+      setCurrentPageData(currentDate);
     }
   }, [paintings]);
 
   useEffect(() => {
-    const calculateDate = value != '' ? searchPaitings : allPaitings;
-    const currentData = calculateDate
-      ? calculateDate.slice(
-          (currentPage - 1) * paintingsPerPage,
-          currentPage * paintingsPerPage,
-        )
-      : [];
-    setCurrentPageData(currentData);
-  }, [allPaitings, searchPaitings, currentPaginatePage]);
+    if (value === '') {
+      const currentData = allPaitings
+        ? allPaitings.slice(
+            (currentPage - 1) * paintingsPerPage,
+            currentPage * paintingsPerPage,
+          )
+        : [];
+      debugger;
+      setCurrentPageData(currentData);
+    }
+  }, [allPaitings, currentPaginatePage, value]);
 
   const handlePageClick = (data: { selected: number }) => {
     setCurrentPaginatePage(data.selected);
