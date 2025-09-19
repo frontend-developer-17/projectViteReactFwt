@@ -1,0 +1,222 @@
+@use './variables.scss' as *;
+
+.cardListWrapper {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(min-content, max-content);
+  gap: 32px;
+
+  .cardItem {
+    position: relative;
+    color: $secondary-white;
+    overflow: hidden;
+
+    .cardImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+
+      img {
+        transition: transform 0.5s ease;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &:hover .cardImage {
+      transform: scale(1.1)
+    }
+
+    .cardInfoWrapper {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80%;
+      height: 65px;
+      background-color: $secondary-black;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      &.light {
+        background-color: $primary-white;
+      }
+    }
+
+    .cardInfoBlock {
+      border-left: 3px solid $accent-gold;
+      margin: 5px 0;
+      padding-left: 20px;
+
+      &.light {
+        border-left: 3px solid $accent-red;
+      }
+    }
+
+    .cardInfo {
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .cardInfoHover {
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    .cardInfoNoHover {
+      margin-bottom: -45px;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    &:hover .cardInfoNoHover {
+
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    &:hover .cardInfoHover {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .cardInfoDate {
+      color: $accent-gold;
+      padding: 5px 0;
+
+      &.light {
+        color: $accent-red;
+
+      }
+    }
+
+
+
+  }
+
+
+  @media (max-width: 950px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    .cardInfoBlock {
+      border: none !important
+    }
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+.paginate {
+  display: flex;
+  margin-top: 25px;
+
+  justify-content: center;
+  list-style: none;
+  color: $primary-light-gray;
+  cursor: pointer;
+
+  &.light {
+    color: $primary-dark-gray;
+
+  }
+}
+
+.paginate li {
+  margin: 0 10px;
+  border-radius: 4px;
+  width: 27px;
+  height: 24px;
+  padding: 0 3px;
+  border-radius: 4px;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    border-bottom: 1px solid $secondary-gray;
+
+  }
+}
+
+.activeLink {
+  background-color: $secondary-black;
+  border-radius: 4px;
+  font-weight: bold;
+
+  &.light {
+    background-color: $secondary-white;
+  }
+}
+
+.h1 {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &.light {
+    color: $primary-dark-gray
+  }
+
+}
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  color: $primary-light-gray;
+
+  &.light {
+    color: $primary-dark-gray
+  }
+}
+
+.noMatches {
+  margin-top: 30px;
+  color: $primary-light-gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.paragraphBigMedium {
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+
+  &.light {
+    color: $secondary-black
+  }
+}
+
+@media (max-width: 768px) {
+  .paragraphBigMedium {
+    font-size: 13px
+  }
+
+}
+
+.paragraphBase {
+  font-size: 14px;
+  font-weight: 300;
+
+  &.light {
+    color: $secondary-gray
+  }
+}
