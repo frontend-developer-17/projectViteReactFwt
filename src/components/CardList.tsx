@@ -51,7 +51,6 @@ export const CardList: React.FC<Props> = ({
             currentPage * paintingsPerPage,
           )
         : [];
-      debugger;
       setCurrentPageData(currentData);
     }
   }, [allPaitings, currentPaginatePage, value]);
@@ -83,14 +82,15 @@ export const CardList: React.FC<Props> = ({
       ) : (
         <div>
           <div className={styles.cardListWrapper}>
-            {currentPageData.map((painting) => (
-              <CardItem
-                key={painting.id}
-                painting={painting}
-                authors={authors}
-                locations={locations}
-              />
-            ))}
+            {currentPageData.length > 0 &&
+              currentPageData.map((painting) => (
+                <CardItem
+                  key={painting.id}
+                  painting={painting}
+                  authors={authors}
+                  locations={locations}
+                />
+              ))}
           </div>
         </div>
       )}

@@ -11,8 +11,13 @@
     position: relative;
     color: $secondary-white;
     overflow: hidden;
+    height: 250px;
 
+    // &.loadImage{
+    //   display: none;
+    // }
     .cardImage {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -36,11 +41,9 @@
       bottom: 0;
       left: 0;
       width: 80%;
-      height: 65px;
+      height: min-content;
       background-color: $secondary-black;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+
 
       &.light {
         background-color: $primary-white;
@@ -51,6 +54,9 @@
       border-left: 3px solid $accent-gold;
       margin: 5px 0;
       padding-left: 20px;
+      justify-content: start;
+      align-items: center;
+      height: 100%;
 
       &.light {
         border-left: 3px solid $accent-red;
