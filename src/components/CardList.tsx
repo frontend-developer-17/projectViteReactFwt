@@ -94,7 +94,7 @@ export const CardList: React.FC<Props> = ({
           </div>
         </div>
       )}
-      <div className="">
+      <div className={styles.paginateWrapper}>
         {!value && (
           <ReactPaginate
             className={styles.paginate + lightTheme}
