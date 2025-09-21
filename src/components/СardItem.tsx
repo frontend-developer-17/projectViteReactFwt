@@ -5,7 +5,7 @@ import {
 } from '../types';
 import styles from '..//scss/CardList.module.scss';
 import { useTheme } from '../hooks/themeProvider';
-import { useImages } from '../hooks/fetchImages';
+import { usefetchImages } from '../hooks/fetchImages';
 
 type Props = {
   painting: TPaitings;
@@ -14,7 +14,7 @@ type Props = {
 };
 export const CardItem: React.FC<Props> = ({ painting, authors, locations }) => {
   const { theme } = useTheme();
-  const [currentImage, isPending] = useImages(painting.imageUrl);
+  const [currentImage, isPending] = usefetchImages(painting.imageUrl);
 
   const location =
     locations &&

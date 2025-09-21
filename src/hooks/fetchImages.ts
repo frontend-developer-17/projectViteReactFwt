@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getImages } from "../Axios";
 
-export const useImages = (urlImage:string) => {
+export const usefetchImages = (urlImage:string) => {
     
   const { data, isPending } = useQuery({
     queryKey: ['img', urlImage],
