@@ -24,3 +24,22 @@ export const getAuthors = (): Promise<AxiosResponse<TAuthors[]>> => {
 export const getLocations = (): Promise<AxiosResponse<TLocations[]>> => {
   return api.get('/locations');
 };
+
+export const getImages = (urlImage:string) => {
+ return axios
+    .get(`${BaseUrl[0]}${urlImage}`, {
+      responseType: 'arraybuffer'
+    })
+    .then(response => 
+    btoa(
+      new Uint8Array(response.data).reduce(
+        (data, byte) => data + String.fromCharCode(byte),
+        ''
+      )
+    )
+  )
+     
+};
+
+
+

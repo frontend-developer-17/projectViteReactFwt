@@ -14,6 +14,7 @@ type Props = {
   setCurrentPage: (page: number) => void;
   value: string;
 };
+  
 
 export const CardList: React.FC<Props> = ({
   isPending,
@@ -29,7 +30,6 @@ export const CardList: React.FC<Props> = ({
   const lastPages = useRef<Record<string, boolean>>({});
   const [currentPaginatePage, setCurrentPaginatePage] = useState(0);
   const [currentPageData, setCurrentPageData] = useState<TPaitings[]>([]);
-
   useEffect(() => {
     if (value === '' && !lastPages.current[currentPaginatePage]) {
       if (paintings && paintings.length > 0) {
@@ -65,7 +65,9 @@ export const CardList: React.FC<Props> = ({
   // Условие для отображения "No matches" или данных
   const shouldShowNoMatches = !isPending && currentPageData.length === 0;
   // const shouldShowData = !shouldShowNoMatches && currentPageData.length > 0;
+if(!shouldShowNoMatches && currentPageData.length > 0) {
 
+}
   if (isPending) {
     return <span className={styles.loading + lightTheme}>Loading...</span>;
   }

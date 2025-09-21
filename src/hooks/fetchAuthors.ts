@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { TAuthors } from '../types';
-import { getAuthors } from '../Axios';
+import { getAuthors} from '../Axios';
 
 export const useFetchAuthors = (): [TAuthors[] | undefined] => {
   const { data: authors } = useQuery({
@@ -10,3 +10,6 @@ export const useFetchAuthors = (): [TAuthors[] | undefined] => {
   });
   return [authors];
 };
+
+
+
